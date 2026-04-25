@@ -1,0 +1,43 @@
+/* Configuração básica */
+body {
+    margin: 0;
+    padding: 20px;
+}
+
+/* Cores dos blocos */
+.red    { background-color: #8B0000; }
+.blue   { background-color: #00008B; }
+.green  { background-color: #006400; }
+.purple { background-color: #800080; }
+.orange { background-color: #FF8C00; }
+
+/* Áreas nomeadas */
+.red    { grid-area: red; }
+.blue   { grid-area: blue; }
+.green  { grid-area: green; }
+.purple { grid-area: purple; }
+.orange { grid-area: orange; }
+
+/* Layout padrão (tela menor - imagem de cima) */
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 80px 80px 80px;
+    grid-template-areas:
+        "red    red    blue   blue"
+        "green  purple purple purple"
+        "orange orange orange orange";
+    gap: 0;
+}
+
+/* Layout maior (tela maior - imagem de baixo) */
+@media (min-width: 700px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 80px 120px 80px;
+        grid-template-areas:
+            "red    red    red"
+            "green  purple purple"
+            "green  blue   orange";
+    }
+}

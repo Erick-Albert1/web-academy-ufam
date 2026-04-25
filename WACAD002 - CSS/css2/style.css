@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+background-image: url('https://cdn.universoracionalista.org/wp-content/uploads/2022/12/nebulosa-do-anel-sul-forma-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    align-items: center; 
+    padding-left: 50px; 
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.7);
+    
+    border: 8px solid #a66d3b;
+    border-radius: 40px;
+    
+    color: white;
+    width: 350px;
+    height: 600px;
+    padding: 40px 25px;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Times New Roman', serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    line-height: 1.4;
+    text-align: center;
+}
