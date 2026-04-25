@@ -1,0 +1,54 @@
+/* Configuração básica para visualização */
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.box {
+    height: 150px; /* Altura definida para os blocos aparecerem */
+}
+
+.blue   { background-color: blue; }
+.yellow { background-color: yellow; }
+.red    { background-color: red; }
+.green  { background-color: green; }
+
+.container {
+    display: grid;
+    grid-template-columns: 100px; 
+    gap: 0;
+}
+
+.green {
+    width: 200px; 
+}
+
+@media (min-width: 700px) {
+    .container {
+        grid-template-columns: 100px 100px 100px; 
+        grid-template-rows: auto auto;
+    }
+
+    .blue {
+        grid-row: span 2; 
+        height: 200px;
+    }
+
+    .yellow {
+        grid-column: 2;
+        height: 150px;
+    }
+
+    .red {
+        grid-column: 3;
+        height: 150px;
+    }
+
+    .green {
+        grid-column: 2 / span 2; 
+        height: 50px;
+        width: 200px; 
+    }
+}
