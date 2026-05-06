@@ -1,0 +1,15 @@
+h1 {
+  font-family: sans-serif;
+  text-align: center;
+  color: #333;
+}
+
+.thumb-bar img {
+  width: 20%; /* Exibe as 5 imagens lado a lado */
+  cursor: pointer;
+  outline: 2px solid white;
+}
+
+.thumb-bar img:hover {
+  outline: 2px solid #333;
+}
