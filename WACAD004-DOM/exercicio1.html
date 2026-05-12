@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compra</title>
+  </head>  
+    <body>
+      <div id="resumo-carrinho">
+        <h2>Fechamento do Pedido</h2>
+        
+        <label>Subtotal dos Produtos (R$):</label>
+        <input type="number" id="valor-subtotal" value="150.00">
+        <br><br>
+
+        <label>Valor do Frete (R$):</label>
+        <input type="number" id="valor-frete" value="25.50">
+        <br><br>
+
+        <h3>Itens na sua caixa:</h3>
+        <ul id="lista-produtos">
+          <li class="produto-comprado">Camiseta Básica Preta</li>
+          <li class="produto-comprado">Calça Jeans Tradicional</li>
+          <li class="produto-comprado">Par de Meias Brancas</li>
+        </ul>
+      </div>
+
+      <script>
+        const itens = document.querySelectorAll('.produto-comprado');
+        const quantidade = itens.length;
+
+        const subtotal = Number(document.getElementById('valor-subtotal').value);
+        const frete = Number(document.getElementById('valor-frete').value);
+
+        const total = subtotal + frete;
+
+        console.log("--- Resumo da Compra ---");
+        console.log("Quantidade de itens:", quantidade);
+        console.log("Subtotal: R$", subtotal);
+        console.log("Frete: R$", frete);
+        console.log("Custo Total: R$", total);
+      </script>
+    </body>
+</html>
