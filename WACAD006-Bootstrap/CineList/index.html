@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineList Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">CineList Admin</a>
+            <div class="ms-auto d-flex align-items-center">
+                <a class="nav-link text-white me-3" href="#" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">Menu</a>
+                <a class="nav-link text-white" href="#">Sair</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Gerenciar Catálogo</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCadastro">Adicionar Filme</button>
+        </div>
+
+        <div class="table-responsive bg-white shadow-sm p-3 rounded">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Gênero</th>
+                        <th>Status</th> <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>O Senhor dos Anéis</td>
+                        <td>Fantasia</td>
+                        <td><span class="badge bg-success text-white">Assistido</span></td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-outline-primary me-2">Editar</button>
+                            <button class="btn btn-sm btn-outline-danger">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Interestelar</td>
+                        <td>Ficção Científica</td>
+                        <td><span class="badge bg-warning text-dark">Pendente</span></td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-outline-primary me-2">Editar</button>
+                            <button class="btn btn-sm btn-outline-danger">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCadastro" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cadastrar Novo Filme</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Nome do Filme</label>
+                            <input type="text" class="form-control" placeholder="Digite o título">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Categoria</label>
+                            <select class="form-select">
+                                <option selected>Selecione o gênero</option>
+                                <option>Ação</option>
+                                <option>Drama</option>
+                                <option>Ficção Científica</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Resumo da Obra</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Salvar Filme</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end bg-dark text-white" id="menuLateral">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title">CineList</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action bg-primary text-white active">Catálogo de Filmes</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Gerenciar Usuários</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
