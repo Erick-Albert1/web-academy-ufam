@@ -1,10 +1,10 @@
 require('dotenv').config(); 
 const http = require('http');
-const fs = require('fs').promises; // Regra: fs promises 
+const fs = require('fs').promises; 
 const path = require('path');
 
 const server = http.createServer(async (req, res) => {
-    // Regra: usar req.url para identificar o arquivo 
+    
     let url = req.url; 
     if (url === '/' || url === '') url = '/index.html';
 
@@ -27,6 +27,5 @@ const server = http.createServer(async (req, res) => {
     }
 });
 
-// Regra: usar variável de ambiente 
 const PORT = process.env.PORT || 3333;
 server.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));
