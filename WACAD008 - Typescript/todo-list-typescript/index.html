@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="./dist/index.js"></script>
+
+    <title>Laboratório 01 - Lembretes</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 0 10px; }
+        form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        input, textarea, button { padding: 8px; font-size: 14px; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .lembrete-card { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 4px; position: relative; }
+        .btn-delete { background-color: #dc3545; color: white; margin-right: 5px; }
+        .btn-delete:hover { background-color: #bd2130; }
+        .btn-edit { background-color: #ffc107; color: black; }
+        .btn-edit:hover { background-color: #e0a800; }
+        .acoes { margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>Criar Lembrete</h2>
+    <form id="form-lembrete">
+        <input type="text" id="titulo" placeholder="Título do Lembrete" required>
+        <input type="datetime-local" id="data-limite">
+        <textarea id="descricao" placeholder="Descrição (opcional)"></textarea>
+        <button type="submit">Adicionar Lembrete</button>
+    </form>
+
+    <h2>Meus Lembretes</h2>
+    <div id="lista-lembretes"></div>
+
+    <script src="index.js"></script>
+    <script type="module" src="./dist/index.js"></script>
+
+</body>
+</html>

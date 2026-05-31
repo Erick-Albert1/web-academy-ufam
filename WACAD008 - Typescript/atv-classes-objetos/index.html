@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório 02 - Estatísticas da Turma</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 0 10px; display: flex; gap: 20px; }
+        .coluna-esquerda { flex: 1; }
+        .coluna-direita { width: 320px; background-color: #f8f9fa; padding: 15px; border-radius: 5px; border: 1px solid #ddd; height: fit-content; }
+        form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: white; }
+        input, button { padding: 8px; font-size: 14px; }
+        button { background-color: #28a745; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #218838; }
+        .aluno-card { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 4px; background: white; position: relative; }
+        .btn-delete { background-color: #dc3545; }
+        .btn-delete:hover { background-color: #bd2130; }
+        .btn-edit { background-color: #ffc107; color: black; margin-right: 5px; }
+        .btn-edit:hover { background-color: #e0a800; }
+        .acoes { margin-top: 10px; }
+        .estatistica-item { margin-bottom: 10px; font-size: 15px; }
+        .estatistica-item strong { color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <div class="coluna-esquerda">
+        <h2>Cadastrar Aluno</h2>
+        <form id="form-aluno">
+            <input type="text" id="nome" placeholder="Nome Completo" required>
+            <input type="number" id="idade" placeholder="Idade" min="1" required>
+            <input type="number" id="altura" placeholder="Altura (ex: 1.75)" step="0.01" min="0.5" required>
+            <input type="number" id="peso" placeholder="Peso em kg (ex: 70.5)" step="0.1" min="1" required>
+            <button type="submit">Adicionar Aluno à Turma</button>
+        </form>
+
+        <h2>Lista de Alunos</h2>
+        <div id="lista-alunos"></div>
+    </div>
+
+    <div class="coluna-direita">
+        <h3>📊 Estatísticas da Turma</h3>
+        <hr>
+        <div id="painel-estatisticas">
+            <div class="estatistica-item">Total de Alunos: <strong id="est-total">0</strong></div>
+            <div class="estatistica-item">Média de Idade: <strong id="est-idade">0 anos</strong></div>
+            <div class="estatistica-item">Média de Altura: <strong id="est-altura">0.00 m</strong></div>
+            <div class="estatistica-item">Média de Peso: <strong id="est-peso">0.00 kg</strong></div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

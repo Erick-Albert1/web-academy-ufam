@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório 03 - Carrinho de Compras</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 0 10px; display: flex; gap: 20px; }
+        .coluna-esquerda { flex: 1; }
+        .coluna-direita { width: 320px; background-color: #f8f9fa; padding: 15px; border-radius: 5px; border: 1px solid #ddd; height: fit-content; }
+        form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: white; }
+        input, select, button { padding: 8px; font-size: 14px; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #0056b3; }
+        .produto-card { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 4px; background: white; position: relative; }
+        .btn-delete { background-color: #dc3545; color: white; border: none; padding: 5px 10px; cursor: pointer; float: right; }
+        .btn-delete:hover { background-color: #bd2130; }
+        .dinamico { display: none; flex-direction: column; gap: 10px; }
+        .estatistica-item { margin-bottom: 10px; font-size: 16px; }
+        .estatistica-item strong { color: #28a745; font-size: 18px; }
+    </style>
+</head>
+<body>
+
+    <div class="coluna-esquerda">
+        <h2>Adicionar Produto ao Carrinho</h2>
+        <form id="form-produto">
+            <select id="tipo-produto" required>
+                <option value="">Selecione o Tipo de Produto</option>
+                <option value="tv">TV</option>
+                <option value="celular">Celular</option>
+                <option value="bicicleta">Bicicleta</option>
+            </select>
+
+            <input type="text" id="modelo" placeholder="Modelo" required>
+            <input type="text" id="fabricante" placeholder="Fabricante" required>
+            <input type="number" id="valor" placeholder="Valor (R$)" step="0.01" min="0.01" required>
+
+            <div id="campos-tv" class="dinamico">
+                <input type="text" id="resolucao" placeholder="Resolução (ex: 4K)">
+                <input type="number" id="polegadas" placeholder="Tamanho em Polegadas">
+            </div>
+
+            <div id="campos-celular" class="dinamico">
+                <input type="text" id="memoria" placeholder="Memória (ex: 128GB)">
+            </div>
+
+            <div id="campos-bicicleta" class="dinamico">
+                <input type="number" id="aro" placeholder="Tamanho do Aro">
+            </div>
+
+            <button type="submit">Inserir no Carrinho</button>
+        </form>
+
+        <h2>Itens no Carrinho</h2>
+        <div id="lista-produtos"></div>
+    </div>
+
+    <div class="coluna-direita">
+        <h3>🛒 Resumo do Carrinho</h3>
+        <hr>
+        <div id="painel-estatisticas">
+            <div class="estatistica-item">Quantidade de Itens: <strong id="est-qtd">0</strong></div>
+            <div class="estatistica-item">Valor Total: <strong id="est-total">R$ 0,00</strong></div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+        const tipoSelect = document.getElementById('tipo-produto');
+        const camposTv = document.getElementById('campos-tv');
+        const camposCelular = document.getElementById('campos-celular');
+        const camposBicicleta = document.getElementById('campos-bicicleta');
+
+        tipoSelect.addEventListener('change', () => {
+            camposTv.style.display = 'none';
+            camposCelular.style.display = 'none';
+            camposBicicleta.style.display = 'none';
+
+            document.getElementById('resolucao').required = false;
+            document.getElementById('polegadas').required = false;
+            document.getElementById('memoria').required = false;
+            document.getElementById('aro').required = false;
+
+            if (tipoSelect.value === 'tv') {
+                camposTv.style.display = 'flex';
+                document.getElementById('resolucao').required = true;
+                document.getElementById('polegadas').required = true;
+            } else if (tipoSelect.value === 'celular') {
+                camposCelular.style.display = 'flex';
+                document.getElementById('memoria').required = true;
+            } else if (tipoSelect.value === 'bicicleta') {
+                camposBicicleta.style.display = 'flex';
+                document.getElementById('aro').required = true;
+            }
+        });
+    </script>
+</body>
+</html>
