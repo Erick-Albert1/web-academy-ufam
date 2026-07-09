@@ -1,0 +1,9 @@
+{
+  "products": [
+    { "id": 1, "name": "Notebook Dell Inspiron", "price": 3499.9, "stock": 12 },
+    { "id": 2, "name": "Mouse sem fio Logitech", "price": 89.9, "stock": 50 },
+    { "id": 3, "name": "Teclado mecânico Redragon", "price": 249.9, "stock": 30 },
+    { "id": 4, "name": "Monitor LG 24 polegadas", "price": 799.9, "stock": 8 },
+    { "id": 5, "name": "SSD Kingston 480GB", "price": 219.9, "stock": 25 }
+  ]
+}

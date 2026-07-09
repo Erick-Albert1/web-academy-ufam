@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1>Produtos</h1>
+  <a class="btn btn-primary" href="/product/create">Novo produto</a>
+</div>
+
+<table class="table table-striped align-middle">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Preço</th>
+      <th>Estoque</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.price}}</td>
+        <td>{{this.stock}}</td>
+        <td>
+          <a class="btn btn-sm btn-outline-secondary" href="/product/{{this.id}}">Ver</a>
+          <a class="btn btn-sm btn-outline-primary" href="/product/update/{{this.id}}">Editar</a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

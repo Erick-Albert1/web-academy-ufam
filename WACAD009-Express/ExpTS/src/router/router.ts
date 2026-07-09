@@ -1,30 +1,22 @@
-import { Router, Request, Response } from 'express';
-import { LoremIpsum } from 'lorem-ipsum';
+import { Router } from 'express';
+import mainController from '../controllers/main';
+import productController from '../controllers/product';
 
 const router = Router();
 
-const lorem = new LoremIpsum({
-  sentencesPerParagraph: { max: 8, min: 4 },
-  wordsPerSentence: { max: 16, min: 4 },
-});
+router.get('/', mainController.index);
+router.get('/lorem/:paragrafos', mainController.loremIpsum);
+router.get('/hb1', mainController.hb1);
+router.get('/hb2', mainController.hb2);
+router.get('/hb3', mainController.hb3);
+router.get('/hb4', mainController.hb4);
 
-router.get('/', (_req: Request, res: Response) => {
-  res.send('Hello World com TypeScript!');
-});
-
-router.get('/lorem/:paragrafos', (req: Request, res: Response) => {
-  const paragrafos = Number(req.params.paragrafos);
-
-  if (!Number.isInteger(paragrafos) || paragrafos <= 0) {
-    res.status(400).json({
-      error: 'O parâmetro "paragrafos" deve ser um número inteiro positivo.',
-    });
-    return;
-  }
-
-  const texto = lorem.generateParagraphs(paragrafos);
-
-  res.send(texto);
-});
+router.get('/product', productController.index);
+router.get('/product/create', productController.create);
+router.post('/product/create', productController.create);
+router.get('/product/update/:id', productController.update);
+router.post('/product/update/:id', productController.update);
+router.get('/product/:id', productController.read);
+router.post('/product/:id', productController.remove);
 
 export default router;

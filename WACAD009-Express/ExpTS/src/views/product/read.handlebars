@@ -1,0 +1,15 @@
+<h1>{{product.name}}</h1>
+
+<ul class="list-group col-md-6 mb-3">
+  <li class="list-group-item"><strong>ID:</strong> {{product.id}}</li>
+  <li class="list-group-item"><strong>Nome:</strong> {{product.name}}</li>
+  <li class="list-group-item"><strong>Preço:</strong> {{product.price}}</li>
+  <li class="list-group-item"><strong>Estoque:</strong> {{product.stock}}</li>
+</ul>
+
+<a class="btn btn-primary" href="/product/update/{{product.id}}">Editar</a>
+<a class="btn btn-secondary" href="/product">Voltar</a>
+
+<form method="POST" action="/product/{{product.id}}" class="d-inline">
+  <button class="btn btn-danger" type="submit">Excluir</button>
+</form>
