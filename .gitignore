@@ -1,3 +1,7 @@
 node_modules
 .env
 logs
+
+# Trabalho final de containers: .env necessário para o build/execução do docker-compose
+!WACAD0012-CONTÊINERS/tp-final-webacademy/backend/.env
+!WACAD0012-CONTÊINERS/tp-final-webacademy/frontend/.env
