@@ -1,6 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  if (pathname === "/login" || pathname === "/cadastro") {
+    return null;
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
@@ -29,6 +39,15 @@ export default function Navbar() {
               <Link href="/cart" className="nav-link">
                 Carrinho
               </Link>
+            </li>
+            <li className="nav-item">
+              <button
+                type="button"
+                className="btn btn-link nav-link"
+                onClick={() => router.push("/login")}
+              >
+                Sair
+              </button>
             </li>
           </ul>
         </div>
