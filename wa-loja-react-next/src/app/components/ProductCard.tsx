@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
+import { useContext } from "react";
 import { toast } from "react-toastify";
 import { Product } from "../types/product";
-import { favoriteApi } from "../services/api";
+import { FavoritesContext } from "../contexts/FavoritesContext";
 
 interface ProductCardProps {
   product: Product;
@@ -12,20 +12,23 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, addToCart }: ProductCardProps) {
   const router = useRouter();
+  const { favorites, setFavorites } = useContext(FavoritesContext);
+
+  const isFavorite = favorites.some((favorite) => favorite.id === product.id);
 
   function goToProductDetails() {
     router.push("/produto/" + product.id);
   }
 
-  const favoriteMutation = useMutation({
-    mutationFn: () => favoriteApi.post("/favoritos", product),
-    onSuccess: () => {
+  function toggleFavorite() {
+    if (isFavorite) {
+      setFavorites((prev) => prev.filter((favorite) => favorite.id !== product.id));
+      toast.success("Produto removido dos favoritos!");
+    } else {
+      setFavorites((prev) => [...prev, product]);
       toast.success("Produto favoritado!");
-    },
-    onError: () => {
-      toast.error("Erro");
-    },
-  });
+    }
+  }
 
   return (
     <div className="card h-100">
@@ -60,10 +63,10 @@ export default function ProductCard({ product, addToCart }: ProductCardProps) {
         </button>
         <button
           type="button"
-          className="btn btn-outline-danger mt-2"
-          onClick={() => favoriteMutation.mutate()}
+          className={`btn mt-2 ${isFavorite ? "btn-danger" : "btn-outline-danger"}`}
+          onClick={toggleFavorite}
         >
-          Favoritar
+          {isFavorite ? "Remover dos favoritos" : "Favoritar"}
         </button>
       </div>
     </div>
