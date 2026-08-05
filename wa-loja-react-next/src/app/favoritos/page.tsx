@@ -1,16 +1,9 @@
 "use client";
 
-import { useContext } from "react";
-import { toast } from "react-toastify";
-import { FavoritesContext } from "../contexts/FavoritesContext";
+import { useFavoritesContext } from "../contexts/FavoritesContext";
 
 export default function Favoritos() {
-  const { favorites, setFavorites } = useContext(FavoritesContext);
-
-  function removeFavorite(id: string) {
-    setFavorites((prev) => prev.filter((product) => product.id !== id));
-    toast.success("Favorito removido!");
-  }
+  const { favorites, removeFavorite, favoritesTotal } = useFavoritesContext();
 
   return (
     <main className="container py-4 flex-1">
@@ -49,6 +42,17 @@ export default function Favoritos() {
               </tr>
             ))}
           </tbody>
+          <tfoot>
+            <tr>
+              <th>Total</th>
+              <th colSpan={2}>
+                {favoritesTotal.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
+              </th>
+            </tr>
+          </tfoot>
         </table>
       )}
     </main>

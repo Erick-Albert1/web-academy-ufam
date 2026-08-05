@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { useAuthContext } from "../contexts/AuthContext";
 
 interface CadastroFormValues {
   nome: string;
@@ -11,15 +11,15 @@ interface CadastroFormValues {
 }
 
 export default function Cadastro() {
-  const router = useRouter();
+  const { login } = useAuthContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<CadastroFormValues>();
 
-  function onSubmit() {
-    router.push("/");
+  function onSubmit(data: CadastroFormValues) {
+    login(data.email);
   }
 
   return (

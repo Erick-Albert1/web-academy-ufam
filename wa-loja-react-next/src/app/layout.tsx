@@ -8,6 +8,7 @@ import BootstrapClient from "./components/clients/BootstrapClient";
 import ReactQueryClientProvider from "./components/clients/ReactQueryClient";
 import { ToastContainer } from "react-toastify";
 import { FavoritesProvider } from "./contexts/FavoritesContext";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,12 +37,14 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ReactQueryClientProvider>
-          <FavoritesProvider>
-            <Navbar />
-            {children}
-            <BootstrapClient />
-          </FavoritesProvider>
-          <ToastContainer />
+          <AuthProvider>
+            <FavoritesProvider>
+              <Navbar />
+              {children}
+              <BootstrapClient />
+            </FavoritesProvider>
+            <ToastContainer />
+          </AuthProvider>
         </ReactQueryClientProvider>
       </body>
     </html>

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { useAuthContext } from "../contexts/AuthContext";
 
 interface LoginFormValues {
   email: string;
@@ -10,15 +10,15 @@ interface LoginFormValues {
 }
 
 export default function Login() {
-  const router = useRouter();
+  const { login } = useAuthContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormValues>();
 
-  function onSubmit() {
-    router.push("/");
+  function onSubmit(data: LoginFormValues) {
+    login(data.email);
   }
 
   return (

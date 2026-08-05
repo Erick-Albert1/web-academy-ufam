@@ -1,9 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
-import { toast } from "react-toastify";
 import { Product } from "../types/product";
-import { FavoritesContext } from "../contexts/FavoritesContext";
+import { useFavoritesContext } from "../contexts/FavoritesContext";
 
 interface ProductCardProps {
   product: Product;
@@ -12,9 +10,9 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, addToCart }: ProductCardProps) {
   const router = useRouter();
-  const { favorites, setFavorites } = useContext(FavoritesContext);
+  const { checkIsFavorite, addFavorite, removeFavorite } = useFavoritesContext();
 
-  const isFavorite = favorites.some((favorite) => favorite.id === product.id);
+  const isFavorite = checkIsFavorite(product.id);
 
   function goToProductDetails() {
     router.push("/produto/" + product.id);
@@ -22,11 +20,9 @@ export default function ProductCard({ product, addToCart }: ProductCardProps) {
 
   function toggleFavorite() {
     if (isFavorite) {
-      setFavorites((prev) => prev.filter((favorite) => favorite.id !== product.id));
-      toast.success("Produto removido dos favoritos!");
+      removeFavorite(product.id);
     } else {
-      setFavorites((prev) => [...prev, product]);
-      toast.success("Produto favoritado!");
+      addFavorite(product);
     }
   }
 
