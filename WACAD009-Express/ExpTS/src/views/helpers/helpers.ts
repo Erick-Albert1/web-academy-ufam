@@ -6,7 +6,9 @@ interface Tecnologia {
   poweredByNodejs: boolean;
 }
 
-function listaTecnologiasNodejs(tecnologias: Tecnologia[]): Handlebars.SafeString {
+function listaTecnologiasNodejs(
+  tecnologias: Tecnologia[],
+): Handlebars.SafeString {
   const itens = tecnologias
     .filter((tecnologia) => tecnologia.poweredByNodejs)
     .map((tecnologia) => `<li>${tecnologia.name} (${tecnologia.type})</li>`)
